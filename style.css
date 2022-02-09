@@ -1,0 +1,45 @@
+body {
+    padding: auto;
+  }
+ .header{
+     text-align: center;
+     background-color: #14b8cb;
+     color: white;
+     height: 1;
+ }
+ .input-group{
+     width: 20rem;
+     display: block;
+     margin-top: 5rem;
+     }
+.span{
+font-size: 35px;
+font-family: 'Rowdies', cursive;
+margin-bottom: 2px;
+}
+.input-group-field{
+    padding: 25px 10px;
+    border-radius: 25px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.main
+.input-group-button
+.button{
+ height: 55px;
+ width: 100px;
+ margin-top: 10px;
+border-radius: 15px;
+}
+
+
+
+
+.footer{
+    padding: 25px 25px ;
+    background-color: #14b8cb;
+    color: aliceblue;
+    font-family: 'Rowdies', cursive;
+    font-size: 25px;
+    text-align: center;
+}
