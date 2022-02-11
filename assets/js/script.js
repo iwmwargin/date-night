@@ -35,6 +35,19 @@ var storeSearchHistory = function(searchValue){
 
 //search button
 searchButton.addEventListener("click", function(event) {
+  fetch("https://covid-19-data.p.rapidapi.com/country?name=italy&format=json", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "covid-19-data.p.rapidapi.com",
+		"x-rapidapi-key": "eff664db17mshe95b0e4695a6a7cp1b915ejsnbf16eceafe4c"
+	}
+})
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.error(err);
+});
 
 })
 
