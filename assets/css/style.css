@@ -50,15 +50,11 @@ border-radius: 15px;
 
 
 
-.footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;    
+.footer{   
+    margin:auto;
     background-color: #14b8cb;
     color: white;
-    padding: 50px;
+    padding: 10px;
     text-align: center;
-    font-size: 35px;
     font-family: 'Rowdies', cursive;
 }
