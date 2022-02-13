@@ -7,7 +7,8 @@ var searchButton = document.querySelector("#search-submit")
 var searchInput = document.querySelector("#search-input") 
 var searchResults = document.querySelector("#search-results")
 var historyContainerEl = document.querySelector("#search-data-list")
-
+var wineList = document.querySelector("#wine-list")
+var pairingText = document.querySelector("#pairing-text")
 
 //search history
 var createHistoryDropdown = function(){
@@ -46,6 +47,15 @@ searchButton.addEventListener("click", function(event) {
 .then((response) => {
 	console.log(response);
   response.json().then((data) => {
+    wines = data.pairedWines
+    pairingText.innerHTML = data.pairingText
+    wineList.innerHTML = ""
+    for (var i = 0; i < wines.length; i++){
+        var listItem = document.createElement("li")
+        listItem.setAttribute("class", "wine-item")
+        listItem.innerHTML = wines[i]
+        wineList.appendChild(listItem)
+    }
     console.log(data);
   })
 })
