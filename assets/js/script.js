@@ -1,8 +1,5 @@
-// setting for API Call
-
-
-
 //Selectors
+
 var searchButton = document.querySelector("#search-submit")
 var searchInput = document.querySelector("#search-input") 
 var searchResults = document.querySelector("#search-results")
