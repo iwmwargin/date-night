@@ -35,7 +35,7 @@ var storeSearchHistory = function(searchValue){
 }
 
 //search button
-searchButton.addEventListener("click", function(event) {
+var getPairing= function() {
   fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/pairing?food=" + searchInput.value + "&maxPrice=50", {
 	"method": "GET",
 	"headers": {
@@ -46,22 +46,29 @@ searchButton.addEventListener("click", function(event) {
 
 .then((response) => {
 	console.log(response);
+  if(response.ok) {
   response.json().then((data) => {
     wines = data.pairedWines
     pairingText.innerHTML = data.pairingText
     wineList.innerHTML = ""
-    for (var i = 0; i < wines.length; i++){
-        var listItem = document.createElement("li")
-        listItem.setAttribute("class", "wine-item")
-        listItem.innerHTML = wines[i]
-        wineList.appendChild(listItem)
-    }
+    displayWine();
     console.log(data);
   })
+} 
 })
 .catch(err => {
 	console.error(err);
 });
-});
+};
 
 
+var displayWine = function() {
+  for (var i = 0; i < wines.length; i++){
+    var listItem = document.createElement("li")
+    listItem.setAttribute("class", "wine-item")
+    listItem.innerHTML = wines[i]
+    wineList.appendChild(listItem)
+}
+}
+
+searchButton.addEventListener("click", getPairing);

@@ -1,6 +1,7 @@
 
 body {
     padding: auto;
+    background-image: linear-gradient( 180deg, rgb(200, 210, 245) 23.8%, rgb(221, 252, 236)92%);
   }
  .header{
      text-align: center;
@@ -48,7 +49,9 @@ border-radius: 15px;
     
 }
 
-
+.button:active {
+    transform: scale(0.90);
+}
 
 .footer{   
     margin:auto;
