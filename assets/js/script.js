@@ -6,12 +6,12 @@
 var searchButton = document.querySelector("#search-submit")
 var searchInput = document.querySelector("#search-input") 
 var searchResults = document.querySelector("#search-results")
-var historyContainerE1 = document.querySelector("#search-data-list")
+var historyContainerEl = document.querySelector("#search-data-list")
 
 
 //search history
 var createHistoryDropdown = function(){
-  historyContainerE1.innerHTML = "";
+  historyContainerEl.innerHTML = "";
   historyContainerEl.innerHTML = "";
     var searchHistoryArr = JSON.parse(localStorage.getItem("searchHistoryArr"));
     if (searchHistoryArr != null){
@@ -35,19 +35,23 @@ var storeSearchHistory = function(searchValue){
 
 //search button
 searchButton.addEventListener("click", function(event) {
-  fetch("https://covid-19-data.p.rapidapi.com/country?name=italy&format=json", {
+  fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/pairing?food=" + searchInput + "&maxPrice=50", {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-host": "covid-19-data.p.rapidapi.com",
+		"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
 		"x-rapidapi-key": "eff664db17mshe95b0e4695a6a7cp1b915ejsnbf16eceafe4c"
 	}
 })
-.then(response => {
+
+.then((response) => {
 	console.log(response);
+  response.json().then((data) => {
+    console.log(data);
+  })
 })
 .catch(err => {
 	console.error(err);
 });
+});
 
-})
 
