@@ -35,7 +35,7 @@ var storeSearchHistory = function(searchValue){
 
 //search button
 searchButton.addEventListener("click", function(event) {
-  fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/pairing?food=" + searchInput + "&maxPrice=50", {
+  fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/pairing?food=" + searchInput.value + "&maxPrice=50", {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
