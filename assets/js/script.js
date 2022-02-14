@@ -22,6 +22,10 @@ var renderSearchHistory = function(){
   for (var i = 0 ; i < searchHistory.length; i++){
     var button = document.createElement("button")
     button.setAttribute("class", "button")
+    button.addEventListener("click", function(event){
+      console.log(event.target.innerHTML)
+     renderSearch(event.target.innerHTML)
+    })
     button.innerHTML = searchHistory[i]
     recentHistory.appendChild(button)
     console.log(searchHistory[i])
@@ -29,11 +33,11 @@ var renderSearchHistory = function(){
 }
 
 //store search history
-var storeSearchHistory = function () {
+var storeSearchHistory = function (search) {
   if(searchHistory.length >= 5){
     searchHistory.pop()
   }
-  searchHistory.unshift(searchInput.value)
+  searchHistory.unshift(search)
   console.log(searchHistory)
   localStorage.setItem("Searchhistory", JSON.stringify(searchHistory))
   renderSearchHistory()
@@ -41,8 +45,8 @@ var storeSearchHistory = function () {
 }
 
 // rendering search
-var renderSearch = function () {
-  fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/pairing?food=" + searchInput.value + "&maxPrice=50", {
+var renderSearch = function (search) {
+  fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/pairing?food=" + search + "&maxPrice=50", {
     "method": "GET",
     "headers": {
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
@@ -75,8 +79,8 @@ var renderSearch = function () {
 
 //search button
 searchButton.addEventListener("click", function (event) {
-  storeSearchHistory()
-  renderSearch()
+  storeSearchHistory(searchInput.value)
+  renderSearch(searchInput.value)
 });
 
 renderSearchHistory()
