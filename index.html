@@ -23,11 +23,16 @@
     </header>
 
     <main class="main row columns large-3">
-        <div class="input-group columns large-3 ">
+        <div class="input-group  large-3 columns  medium-10 columns ">
             <span class="span">Search near you</span>
             <input class="input-group-field" type="search" placeholder="search..." id="search-input">
+            <datalist id="search-data-list"></datalist>
             <div class="input-group-button">
                 <input type="submit" class="button" value="Submit" id="search-submit">
+            </div>
+            <div id="search-results">
+                <div id="pairing-text"></div>
+                <ul id="wine-list"></ul>
             </div>
         </div>
     </main>
@@ -38,8 +43,13 @@
         </div>
     </section>
     <footer class="footer"> © Done by Eric, Leigh, Carlos, Luke</footer>
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js"
-        crossorigin="anonymous"></script>
+
+
+    <!-- <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDy3sMnGy3fTuFudtKWFYfNkC8HaiO4nbY&libraries=places&callback=initMap">
+</script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" -->
+        <!-- crossorigin="anonymous"></script> -->
         <script src="./assets/js/script.js"> </script>
 </body>
 

@@ -48,6 +48,7 @@ border-radius: 15px;
     
 }
 
+<<<<<<< HEAD
 .footer{
     position: relative;
     bottom: 0;
@@ -58,5 +59,15 @@ border-radius: 15px;
     padding: 20px;
     text-align: center;
     font-size: small;
+=======
+
+
+.footer{   
+    margin:auto;
+    background-color: #14b8cb;
+    color: white;
+    padding: 10px;
+    text-align: center;
+>>>>>>> 4d51b11e090c360ab53a06c9a0557828d9fa3f0f
     font-family: 'Rowdies', cursive;
 }
