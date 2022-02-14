@@ -1,71 +1,80 @@
 //Selectors
 
-var searchButton = document.querySelector("#search-submit")
-var searchInput = document.querySelector("#search-input") 
-var searchResults = document.querySelector("#search-results")
-var historyContainerEl = document.querySelector("#search-data-list")
-var wineList = document.querySelector("#wine-list")
-var pairingText = document.querySelector("#pairing-text")
+var searchButton = document.querySelector("#search-submit");
+var searchInput = document.querySelector("#search-input");
+var searchResults = document.querySelector("#search-results");
+var historyContainerEl = document.querySelector("#search-data-list");
+var wineList = document.querySelector("#wine-list");
+var pairingText = document.querySelector("#pairing-text");
 
 //search history
-var createHistoryDropdown = function(){
+var createHistoryDropdown = function () {
   historyContainerEl.innerHTML = "";
   historyContainerEl.innerHTML = "";
-    var searchHistoryArr = JSON.parse(localStorage.getItem("searchHistoryArr"));
-    if (searchHistoryArr != null){
-        searchHistoryArr = searchHistoryArr.sort();
-        console.log(searchHistoryArr);
-        for (var i=0;i<searchHistoryArr.length;i++){
-          //console.log(searchHistoryArr[i]);
-          var historyListItem = document.createElement("option");
-          historyListItem.value = searchHistoryArr[i];
-          historyListItem.text = searchHistoryArr[i];
-          historyContainerEl.appendChild(historyListItem);
-}
-}
-}
- 
-//store search hx
-var storeSearchHistory = function(searchValue){
-  var cleanedSearchValue = searchValue.toLowerCase().trim();
-  var searchHistoryArr = JSON.parse(localStorage.getItem("searchHistoryArr"))
-}
-
-//search button
-var getPairing= function() {
-  fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/pairing?food=" + searchInput.value + "&maxPrice=50", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-		"x-rapidapi-key": "eff664db17mshe95b0e4695a6a7cp1b915ejsnbf16eceafe4c"
-	}
-})
-
-.then((response) => {
-	console.log(response);
-  if(response.ok) {
-  response.json().then((data) => {
-    wines = data.pairedWines
-    pairingText.innerHTML = data.pairingText
-    wineList.innerHTML = ""
-    displayWine();
-    console.log(data);
-  })
-} 
-})
-.catch(err => {
-	console.error(err);
-});
+  var searchHistoryArr = JSON.parse(localStorage.getItem("searchHistoryArr"));
+  if (searchHistoryArr != null) {
+    searchHistoryArr = searchHistoryArr.sort();
+    console.log(searchHistoryArr);
+    for (var i = 0; i < searchHistoryArr.length; i++) {
+      //console.log(searchHistoryArr[i]);
+      var historyListItem = document.createElement("option");
+      historyListItem.value = searchHistoryArr[i];
+      historyListItem.text = searchHistoryArr[i];
+      historyContainerEl.appendChild(historyListItem);
+    }
+  }
 };
 
+//store search hx
+var storeSearchHistory = function (searchValue) {
+  var cleanedSearchValue = searchValue.toLowerCase().trim();
+  var searchHistoryArr = JSON.parse(localStorage.getItem("searchHistoryArr"));
+};
 
-var displayWine = function() {
-  for (var i = 0; i < wines.length; i++){
-    var listItem = document.createElement("li")
-    listItem.setAttribute("class", "wine-item")
-    listItem.innerHTML = wines[i]
-    wineList.appendChild(listItem)
-}
-}
+//search button
+var getPairing = function () {
+  fetch(
+    "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/pairing?food=" +
+      searchInput.value +
+      "&maxPrice=50",
+    {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host":
+          "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        "x-rapidapi-key": "eff664db17mshe95b0e4695a6a7cp1b915ejsnbf16eceafe4c",
+      },
+    }
+  )
+    .then((response) => {
+      console.log(response);
+      if (response.ok) {
+        response.json().then((data) => {
+          wines = data.pairedWines;
+          pairingText.innerHTML = data.pairingText;
+          wineList.innerHTML = "";
+          displayWine();
+          console.log(data);
+        });
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+var displayWine = function () {
+  try {
+    for (var i = 0; i < wines.length; i++) {
+      var listItem = document.createElement("li");
+      listItem.setAttribute("class", "wine-item");
+      listItem.innerHTML = wines[i];
+      wineList.appendChild(listItem);
+    }
+  } catch (error) {
+    pairingText.innerHTML =
+      "Sorry, I don't know that one. Please try another dish!";
+  }
+};
 
 searchButton.addEventListener("click", getPairing);
