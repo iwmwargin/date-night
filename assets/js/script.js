@@ -50,18 +50,22 @@ searchButton.addEventListener("click", function(event) {
     wines = data.pairedWines
     pairingText.innerHTML = data.pairingText
     wineList.innerHTML = ""
-    for (var i = 0; i < wines.length; i++){
-        var listItem = document.createElement("li")
-        listItem.setAttribute("class", "wine-item")
-        listItem.innerHTML = wines[i]
-        wineList.appendChild(listItem)
+    try {
+      for (var i = 0; i < wines.length; i++){
+          var listItem = document.createElement("li")
+          listItem.setAttribute("class", "wine-item")
+          listItem.innerHTML = wines[i]
+          wineList.appendChild(listItem)
+      }
+    } catch (error) {
+      pairingText.innerHTML = "Result not found. Please try again."
+      
     }
+    
     console.log(data);
   })
 })
-.catch(err => {
-	console.error(err);
-});
+
 });
 
 
