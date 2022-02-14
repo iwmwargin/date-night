@@ -64,4 +64,10 @@ searchButton.addEventListener("click", function(event) {
 });
 });
 
+//search button
+searchButton.addEventListener("click", function (event) {
+  storeSearchHistory(searchInput.value)
+  renderSearch(searchInput.value)
+});
 
+renderSearchHistory()
