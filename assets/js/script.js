@@ -15,7 +15,7 @@ var historyContainerEl = document.querySelector("#search-data-list")
 var wineList = document.querySelector("#wine-list")
 var pairingText = document.querySelector("#pairing-text")
 var recentHistory = document.querySelector("#recent-history")
-var recipeList = document.querySelector("#recipe-list")
+var recipeResults = document.querySelector("#recipe-results")
 
 //render search history
 var renderSearchHistory = function () {
@@ -56,7 +56,7 @@ var renderSearch = function (search) {
   })
 
     .then((response) => {
-      console.log(response);
+      //console.log(response);
       response.json().then((data) => {
         wines = data.pairedWines
         pairingText.innerHTML = data.pairingText
@@ -73,7 +73,7 @@ var renderSearch = function (search) {
 
         }
 
-        console.log(data);
+        //console.log(data);
       })
     })
   fetch("https://tasty.p.rapidapi.com/recipes/list?from=0&size=5&q=" + search, {
@@ -85,19 +85,46 @@ var renderSearch = function (search) {
   })
 
     .then(response => {
-      console.log(response);
+      //console.log(response);
       response.json().then((data) => {
-        console.log(data)
-        recipeList.innerHTML = ""
-        try {
-          for (var i = 0; i < results.length; i++) {
-            var listItem = document.createElement("li")
-            listItem.innerHTML = recipeList[i]
-            recipeList.appendChild(listItem)
+        console.log(data.results)
+        console.log(data.results[0].instructions.length)
+        recipeResults.innerHTML = ""
+        // try {
+        for (var i = 0; i < data.results.length; i++) {
+          var recipe = document.createElement("div")
+          var recipeName = document.createElement("div")
+          recipe.setAttribute("class", "recipe")
+          recipeName.setAttribute("class", "recipe-name")
+          recipeName.innerHTML = data.results[i].name
+          recipe.appendChild(recipeName)
+          if (data.results[i].instructions) {
+            var instructions = document.createElement("ul")
+            instructions.setAttribute("class", "instructions")
+            for (var r = 0; r < data.results[i].instructions.length; r++) {
+              var step = document.createElement("li")
+              step.setAttribute("class", "step")
+              step.innerHTML = data.results[i].instructions[r].display_text
+              instructions.appendChild(step)
+            }
+            recipe.appendChild(instructions)
+          } else if(data.results[i].video_url) {
+            var link = document.createElement("a")
+            link.innerHTML = "Link to Video Instructions"
+            link.setAttribute("href", data.results[i].video_url)
+            recipe.appendChild(link)
+          } else {
+            var noInstruction = document.createElement("div")
+            noInstruction.innerHTML = "There are no instructions to be found. Good Luck!"
+            
           }
-        } catch (error) {
-          recipeList.innerHTML = "No Recipies Found"
+          recipeResults.appendChild(recipe)
         }
+
+        //} 
+        // catch (error) {
+        //   recipeResults.innerHTML = "No Recipies Found"
+        // }
       })
     })
 
