@@ -76,7 +76,7 @@ var renderSearch = function (search) {
         //console.log(data);
       })
     })
-  fetch("https://tasty.p.rapidapi.com/recipes/list?from=0&size=5&q=" + search, {
+  fetch("https://tasty.p.rapidapi.com/recipes/list?from=0&size=3&q=" + search, {
     "method": "GET",
     "headers": {
       "x-rapidapi-host": "tasty.p.rapidapi.com",
