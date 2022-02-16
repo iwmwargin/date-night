@@ -10,44 +10,60 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Date Night</title>
 </head>
 
-<body>
-    <nav class="navbar " role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item">Date Night</a>
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-      </nav>
+<body class="has-background-info-light">
+      <!-- date night at home primary  -->
     <section class="hero is-halfheight is-info">
-        <div class="hero-body">
-          <p class="title">
+        <div class="hero-body container ">
+          <p class="title is-size-1  has-text-centered ">
             Date Night at Home
           </p>
-          <p class="subtitle">
-          </p>
+         
+        
         </div>
+        <article class="message container is">
+            <div class="message-body has-text-centered has-text-weight-semibold">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+            </div>
+          </article>
+         
+          
+      
+                
+                  <div class="input-group container   ">
+                      <div class="column " >  
+                <span class="span" id="tiltle-search ">Search near you</span>
+                <input class="input-group-field input is-link" type="text" placeholder="search..." id="search-input ">
+            
+                <datalist id="search-data-list"></datalist>
+                <div class="input-group-button">
+                    <input type="submit" class="button is-primary is-rounded tag is-warning is-info is-large  has-text-centered" value="Submit" id="search-submit">
+                    
+                </div>
+
+        
+
       </section>
-  </section>
-  <section class="section">
-    <div class="tile is-ancestor">
-        <div class="tile">
-            <div class="tile is-parent">
-                <article class="tile is-child notification is-primary">
-                    <p class="title">Wine Pairing</p>
+ 
+  
+  <section class="section ">
+    <div class="tile is-ancestor ">
+        <div class="tile ">
+            <div class="tile is-parent has-text-centered ">
+                <article class="tile is-child notification  ">
+                    
+                    <p class="title fas fa-info-circle">Wine Pairing</p>
                     <p id="pairing-text"></p>
                 </article>
             </div>
         </div>
-        <div class="tile">
+        <div class="tile notification primary ">
             <div class="tile is-parent">
-                <article class="tile is-child notification is-info">
+                <article class="tile is-child notification is-warning has-text-centered">
                     <p class="title">Recipe</p>
                     <div id="search-results">
                     <p class="subtitle" id="recipe-results"></p>
@@ -57,7 +73,7 @@
         </div>
         <div class="tile">
             <div class="tile is-parent">
-                <article class="tile is-child notification is-info">
+                <article class="tile is-child notification is-info has-text-centered">
                     <p class="title">Recent History</p>
                     <div id="recent-history">
                     <p class="subtitle" id="recipe-results"></p>
@@ -70,28 +86,16 @@
 </section>
 
 
-  <main class="main columns">
-    <div class="input-group column">
-        <span class="span">Search near you</span>
-        <input class="input-group-field input is-link" type="text" placeholder="search..." id="search-input">
-    
-        <datalist id="search-data-list"></datalist>
-        <div class="input-group-button">
-            <input type="submit" class="button is-primary" value="Submit" id="search-submit">
-        </div>
-    </div>
-        
-        </div>
-        <div ></div>
-            <ul id="wine-list"></ul>
-        <div ></div>
-    
-</div>
-</main>
 
 
  
         <script src="./assets/js/script.js"> </script>
 </body>
-
+<footer class="footer has-background-primary">
+    <div class="content has-text-centered ">
+      <p class="is-size-2 ">
+     &copy; Done By Eric , Leigh , Carlos , Luke
+      </p>
+    </div>
+  </footer>
 </html>
