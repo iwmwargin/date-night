@@ -9,48 +9,88 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Dog Park Finder</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Date Night</title>
 </head>
 
 <body>
-    <header class="header">
-        <h1 class="h1">
-            Dog Park Finder
-        </h1>
-    </header>
-
-    <main class="main grid-container">
-        <div class="grid-x grid-margin-x">
-        <div class="input-group cell medium-6 large-4">
-            <span class="span">Search near you</span>
-            <input class="input-group-field" type="search" placeholder="search..." id="search-input">
-            <datalist id="search-data-list"></datalist>
-            <div class="input-group-button">
-                <input type="submit" class="button" value="Submit" id="search-submit">
+    <nav class="navbar " role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item">Date Night</a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      </nav>
+    <section class="hero is-halfheight is-info">
+        <div class="hero-body">
+          <p class="title">
+            Date Night at Home
+          </p>
+          <p class="subtitle">
+          </p>
+        </div>
+      </section>
+  </section>
+  <section class="section">
+    <div class="tile is-ancestor">
+        <div class="tile">
+            <div class="tile is-parent">
+                <article class="tile is-child notification is-primary">
+                    <p class="title">Wine Pairing</p>
+                    <p id="pairing-text"></p>
+                </article>
             </div>
-            <div id="search-results" class="cell medium-6 large-8 card" style="width: 300px;">
-                <div id="pairing-text"></div>
-                <ul id="wine-list"></ul>
+        </div>
+        <div class="tile">
+            <div class="tile is-parent">
+                <article class="tile is-child notification is-info">
+                    <p class="title">Recipe</p>
+                    <div id="search-results">
+                    <p class="subtitle" id="recipe-results"></p>
+                </div>
+                </article>
             </div>
         </div>
+        <div class="tile">
+            <div class="tile is-parent">
+                <article class="tile is-child notification is-info">
+                    <p class="title">Recent History</p>
+                    <div id="recent-history">
+                    <p class="subtitle" id="recipe-results"></p>
+                </div>
+                </article>
+            </div>
         </div>
-    </main>
-    <section class="section">
-        <h2>Recent History</h2>
-        <div id="recentHistory">
-
-        </div>
-    </section>
-    <footer class="footer"> © Done by Eric, Leigh, Carlos, Luke</footer>
-
-
-  
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js"
-        crossorigin="anonymous"></script>
         
+    </div>
+</section>
+x
+
+  <main class="main columns">
+    <div class="input-group column">
+        <span class="span">Search near you</span>
+        <input class="input-group-field input is-link" type="text" placeholder="search..." id="search-input">
+    
+        <datalist id="search-data-list"></datalist>
+        <div class="input-group-button">
+            <input type="submit" class="button is-primary" value="Submit" id="search-submit">
+        </div>
+    </div>
+        
+        </div>
+        <div ></div>
+            <ul id="wine-list"></ul>
+        <div ></div>
+    
+</div>
+</main>
+
+
+ 
         <script src="./assets/js/script.js"> </script>
 </body>
 
