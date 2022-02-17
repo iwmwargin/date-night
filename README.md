@@ -16,7 +16,7 @@ To provide the user with a quick food and wine pairing for a stay at home date n
 The app currently only produces the first recipe in the array and it would be great to randomize or pull multiple recipes in an attractive manner.
 
 ## Website
-<a href="https://github.com/iwmwargin/date-night" target="_blank">Date Night</a>
+<a href="https://iwmwargin.github.io/date-night/" target="_blank">Date Night</a>
 
 ## Images of Website
 Top of Date Night
