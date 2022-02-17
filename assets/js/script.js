@@ -117,17 +117,17 @@ var renderSearch = function (search) {
               }
               recipe.appendChild(instructions)
               var ingregiantList = document.createElement("div")
-              ingregiantList.setAttribute("class", "recipe-name")
-              ingregiantList.innerHTML = "Ingrediant List"
-              recipe.appendChild(ingregiantList)
+              ingredientList.setAttribute("class", "recipe-name")
+              ingredientList.innerHTML = "Ingrediant List"
+              recipe.appendChild(ingredientList)
               for (var u = 0; u < data.results[i].sections[0].components.length; u++){
                 var item = document.createElement("li")
                 item.setAttribute("class", "item")
                 item.innerHTML = data.results[i].sections[0].components[u].raw_text
                 console.log(data.results[i].sections[0].components[0].raw_text)
-                ingrediants.appendChild(item)
+                ingredients.appendChild(item)
               }
-              recipe.appendChild(ingrediants)
+              recipe.appendChild(ingredients)
             }
             recipeResults.appendChild(recipe)
           }
