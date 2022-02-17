@@ -68,6 +68,7 @@ var renderSearch = function (search) {
         pairingText.setAttribute("class", "pairing-text")
         pairingText.innerHTML = data.pairingText
         wineList.innerHTML = ""
+
         try {
           if (wines.length > 0) {
             for (var i = 0; i < wines.length; i++) {
