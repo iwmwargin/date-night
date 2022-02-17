@@ -107,7 +107,7 @@ var renderSearch = function (search) {
               recipeName.innerHTML = data.results[i].name
               recipe.appendChild(recipeName)
               var instructions = document.createElement("ol")
-              var ingrediants = document.createElement("ol")
+              var ingredients = document.createElement("ol")
               instructions.setAttribute("class", "instructions")
               for (var r = 0; r < data.results[i].instructions.length; r++) {
                 var step = document.createElement("li")
