@@ -28,4 +28,4 @@ Bottom of Schedule
 
 
 ### Contribution
-Made by Eric Wargin, Carlos, Leigh and Luke
+Made by Carlos, Leigh, Eric and Luke
