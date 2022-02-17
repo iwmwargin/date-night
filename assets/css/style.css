@@ -1,7 +1,88 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: bisque; 
+ } 
+/* hero styling, including everything sitting on top of it */
 .hero {
-    background-image: url("/Users/crub/Desktop/projects/Testing/pexels-photomix-company-95949\ copy.jpg");
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ), url("https://images.pexels.com/photos/3084603/pexels-photo-3084603.jpeg?cs=srgb&dl=pexels-maria-das-dores-3084603.jpg&fm=jpg");
     background-size: cover;
-        background-position: center;
-        opacity: 0.5;
+    background-position: center;
+    opacity: .9;
+}
+
+.night {
+    font-size: 60px;
+    font-family: fantasy;
+    color: rgb(236, 124, 116);
+    font-weight: bolder;
+}
+.message {
+    opacity: 0.75;
+    
+}
+.message-body {
+    color: brown;
+    opacity: .5;
+}
+
+.input-group-field {
+    opacity: .75; 
+}
+
+.span {
+    font-size: 25px;
+    color:rgb(236, 124, 116);
+}
+
+/* styling for the info in the tiles */
+.button {
+    background-color: rgb(236, 124, 116);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: larger;
+    size: 50px;
+    width: 100%;
+}
+
+.tile, .title, .button {
+    margin-bottom: 5px;
 
 }
+
+.hidden {
+    display: none;
+}
+
+.recipe-name {
+    text-decoration: underline;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+/* fading animation */
+.instructions, .recipe, .step, .content, .tile, .pairing-text {
+	animation: fadeInAnimation ease 2s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+/* *:not(path):not(g) {
+    color:                    hsla(210, 100%, 100%, 0.9) !important;
+    background:               hsla(210, 100%,  50%, 0.5) !important;
+    outline:    solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
+    box-shadow: none !important;
+} */

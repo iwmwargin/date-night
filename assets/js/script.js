@@ -1,6 +1,6 @@
 // setting for API Call
 
-//global varibles 
+//global variables 
 if (localStorage.getItem("Searchhistory")) {
   var searchHistory = JSON.parse(localStorage.getItem("Searchhistory"))
 } else {
@@ -65,9 +65,10 @@ var renderSearch = function (search) {
       response.json().then((data) => {
         console.log(data)
         wines = data.pairedWines
+        pairingText.setAttribute("class", "pairing-text")
         pairingText.innerHTML = data.pairingText
         wineList.innerHTML = ""
-        recipeResults.innerHTML = ""
+
         try {
           if (wines.length > 0) {
             for (var i = 0; i < wines.length; i++) {
@@ -77,14 +78,14 @@ var renderSearch = function (search) {
               wineList.appendChild(listItem)
             }
           } else {
-            pairingText.innerHTML = "We're sorry! We could not find a wine pairng for " + search + ". "
+            pairingText.innerHTML = "We're sorry! We could not find a wine pairing for " + search + ". "
           }
         } catch (error) {
-          pairingText.innerHTML = "We're sorry! We could not find a wine pairng for " + search + "."
+          pairingText.innerHTML = "We're sorry! We could not find a wine pairing for " + search + "."
         }
       })
     })
-  fetch("https://tasty.p.rapidapi.com/recipes/list?from=0&size=5&q=" + search, {
+  fetch("https://tasty.p.rapidapi.com/recipes/list?from=0&size=1&q=" + search, {
     "method": "GET",
     "headers": {
       "x-rapidapi-host": "tasty.p.rapidapi.com",
@@ -95,6 +96,7 @@ var renderSearch = function (search) {
       //console.log(response);
       response.json().then((data) => {
         console.log(data)
+        recipeResults.innerHTML = ""
         if(data.results.length > 0 ){
           for (var i = 0; i < data.results.length; i++) {
             if (data.results[i].instructions) {
@@ -104,7 +106,7 @@ var renderSearch = function (search) {
               recipeName.setAttribute("class", "recipe-name")
               recipeName.innerHTML = data.results[i].name
               recipe.appendChild(recipeName)
-              var instructions = document.createElement("ul")
+              var instructions = document.createElement("ol")
               instructions.setAttribute("class", "instructions")
               for (var r = 0; r < data.results[i].instructions.length; r++) {
                 var step = document.createElement("li")
@@ -121,48 +123,6 @@ var renderSearch = function (search) {
         }
       })
     })
-  fetch("https://tasty.p.rapidapi.com/recipes/list?from=0&size=5&q=" + search, {
-    "method": "GET",
-    "headers": {
-      "x-rapidapi-host": "tasty.p.rapidapi.com",
-      "x-rapidapi-key": "5a14697b02msh42244a1beada018p100b3ajsn699e260e7f11"
-    }
-  })
-
-    .then(response => {
-      //console.log(response);
-      response.json().then((data) => {
-        console.log(data.results)
-        // try {
-        for (var i = 0; i < data.results.length; i++) {
-          if (data.results[i].instructions) {
-            var recipe = document.createElement("div")
-            var recipeName = document.createElement("div")
-            recipe.setAttribute("class", "recipe")
-            recipeName.setAttribute("class", "recipe-name")
-            recipeName.innerHTML = data.results[i].name
-            recipe.appendChild(recipeName)
-            var instructions = document.createElement("ul")
-            instructions.setAttribute("class", "instructions")
-            for (var r = 0; r < data.results[i].instructions.length; r++) {
-              var step = document.createElement("li")
-              step.setAttribute("class", "step")
-              step.innerHTML = data.results[i].instructions[r].display_text
-              instructions.appendChild(step)
-            }
-            recipe.appendChild(instructions)
-          }
-
-          recipeResults.appendChild(recipe)
-        }
-
-        //} 
-        // catch (error) {
-        //   recipeResults.innerHTML = "No Recipies Found"
-        // }
-      })
-    })
-
 }
 
 //search button
@@ -170,5 +130,12 @@ searchButton.addEventListener("click", function (event) {
   storeSearchHistory(searchInput.value)
   renderSearch(searchInput.value)
 });
+
+searchInput.addEventListener("keyup", function(event){
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("search-submit").click();
+    }
+  })
 
 renderSearchHistory()
