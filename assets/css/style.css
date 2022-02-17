@@ -1,9 +1,11 @@
-
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     background-color: bisque; 
  } 
-/* hero styling */
+/* hero styling, including everything sitting on top of it */
 .hero {
     background-image: linear-gradient(
         rgba(0, 0, 0, 0.5),
@@ -11,9 +13,15 @@ body {
       ), url("https://images.pexels.com/photos/3084603/pexels-photo-3084603.jpeg?cs=srgb&dl=pexels-maria-das-dores-3084603.jpg&fm=jpg");
     background-size: cover;
     background-position: center;
-
+    opacity: .9;
 }
 
+.night {
+    font-size: 60px;
+    font-family: fantasy;
+    color: rgb(236, 124, 116);
+    font-weight: bolder;
+}
 .message {
     opacity: 0.75;
     
@@ -24,15 +32,7 @@ body {
 }
 
 .input-group-field {
-    opacity: .75;
-    
-}
-
-.night {
-    font-size: 60px;
-    font-family: fantasy;
-    color: rgb(236, 124, 116);
-    font-weight: bolder;
+    opacity: .75; 
 }
 
 .span {
@@ -40,10 +40,7 @@ body {
     color:rgb(236, 124, 116);
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
+/* styling for the info in the tiles */
 .button {
     background-color: rgb(236, 124, 116);
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -52,20 +49,17 @@ html {
     width: 100%;
 }
 
-.container {
-    vertical-align: middle;
-}
-
-.instructions, .recipe, .step, .wine-item, .content, .tile {
-	animation: fadeInAnimation ease 2s;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards;
-}
-
 .recipe-name {
     text-decoration: underline;
     font-size: larger;
     font-weight: bolder;
+}
+
+/* fading animation */
+.instructions, .recipe, .step, .wine-item, .content, .tile {
+	animation: fadeInAnimation ease 2s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
 }
 
 @keyframes fadeInAnimation {
