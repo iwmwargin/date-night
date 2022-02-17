@@ -116,7 +116,7 @@ var renderSearch = function (search) {
                 instructions.appendChild(step)
               }
               recipe.appendChild(instructions)
-              var ingregiantList = document.createElement("div")
+              var ingredientList = document.createElement("div")
               ingredientList.setAttribute("class", "recipe-name")
               ingredientList.innerHTML = "Ingrediant List"
               recipe.appendChild(ingredientList)
