@@ -89,7 +89,7 @@ var renderSearch = function (search) {
     "method": "GET",
     "headers": {
       "x-rapidapi-host": "tasty.p.rapidapi.com",
-      "x-rapidapi-key": "5a14697b02msh42244a1beada018p100b3ajsn699e260e7f11"
+      "x-rapidapi-key": "eff664db17mshe95b0e4695a6a7cp1b915ejsnbf16eceafe4c"
     }
   })
     .then(response => {
