@@ -78,7 +78,7 @@ var renderSearch = function (search) {
        
       })
     })
-  fetch("https://tasty.p.rapidapi.com/recipes/list?from=0&size=5&q=" + search, {
+  fetch("https://tasty.p.rapidapi.com/recipes/list?from=0&size=1&q=" + search, {
     "method": "GET",
     "headers": {
       "x-rapidapi-host": "tasty.p.rapidapi.com",
@@ -99,7 +99,7 @@ var renderSearch = function (search) {
             recipeName.setAttribute("class", "recipe-name")
             recipeName.innerHTML = data.results[i].name
             recipe.appendChild(recipeName)
-            var instructions = document.createElement("ul")
+            var instructions = document.createElement("ol")
             instructions.setAttribute("class", "instructions")
             for (var r = 0; r < data.results[i].instructions.length; r++) {
               var step = document.createElement("li")
@@ -127,5 +127,13 @@ searchButton.addEventListener("click", function (event) {
   storeSearchHistory(searchInput.value)
   renderSearch(searchInput.value)
 });
+searchInput.addEventListener("keyup", function(event){
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById("search-submit").click();
+  }
+})
 
 renderSearchHistory()
+
+
