@@ -1,6 +1,6 @@
 // setting for API Call
 
-//global varibles 
+//global variables 
 if (localStorage.getItem("Searchhistory")) {
   var searchHistory = JSON.parse(localStorage.getItem("Searchhistory"))
 } else {
@@ -65,9 +65,9 @@ var renderSearch = function (search) {
       response.json().then((data) => {
         console.log(data)
         wines = data.pairedWines
+        pairingText.setAttribute("class", "pairing-text")
         pairingText.innerHTML = data.pairingText
         wineList.innerHTML = ""
-        recipeResults.innerHTML = ""
         try {
           if (wines.length > 0) {
             for (var i = 0; i < wines.length; i++) {
@@ -95,6 +95,7 @@ var renderSearch = function (search) {
       //console.log(response);
       response.json().then((data) => {
         console.log(data)
+        recipeResults.innerHTML = ""
         if(data.results.length > 0 ){
           for (var i = 0; i < data.results.length; i++) {
             if (data.results[i].instructions) {

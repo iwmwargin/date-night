@@ -44,21 +44,22 @@
   <section id="section" class="section">
     <div class="tile is-ancestor">
             <div class="tile is-parent is-vertical">
-                <article class="tile is-child notification is-light is-primary">
+                <article class="tile is-child notification is-light">
                     <p class="title">Wine Pairing</p>
                     <p id="pairing-text" class="content"></p>
                 </article>
-            </div>
-            <div class="tile is-parent recent">
-                <article class="tile is-child notification is-light is-warning">
-                    <p class="title">Recent History</p>
-                    <div id="recent-history">
-                    <p class="subtitle"></p>
+                <div class="tile is-parent recent">
+                    <article class="tile is-child notification is-light">
+                        <p class="title">Recent History</p>
+                        <div id="recent-history">
+                        <p id="sub-button" class="subtitle"></p>
+                    </div>
+                    </article>
                 </div>
-                </article>
             </div>
-            <div class="tile is-parent is-vertical">
-                <article class="tile is-child notification is-light is-info">
+            
+            <div class="tile is-parent is-vertical is-6">
+                <article class="tile is-child notification is-light">
                     <p class="title">Recipe</p>
                     <div id="search-results">
                     <p class="subtitle" id="recipe-results"></p>
@@ -69,9 +70,9 @@
     </div>
 </section>
         </div>
-        <!-- <div ></div>
-            <ul id="wine-list"></ul>
-        <div ></div> -->
+        <div ></div>
+            <ul class="hidden" id="wine-list"></ul>
+        <div ></div>
 
         <script src="./assets/js/script.js"> </script>
 </body>

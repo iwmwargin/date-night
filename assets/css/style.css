@@ -49,6 +49,15 @@ body {
     width: 100%;
 }
 
+.tile, .title, .button {
+    margin-bottom: 5px;
+
+}
+
+.hidden {
+    display: none;
+}
+
 .recipe-name {
     text-decoration: underline;
     font-size: larger;
@@ -56,7 +65,7 @@ body {
 }
 
 /* fading animation */
-.instructions, .recipe, .step, .wine-item, .content, .tile {
+.instructions, .recipe, .step, .content, .tile, .pairing-text {
 	animation: fadeInAnimation ease 2s;
 	animation-iteration-count: 1;
 	animation-fill-mode: forwards;
