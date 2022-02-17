@@ -24,12 +24,12 @@ var renderSearchHistory = function () {
     var button = document.createElement("button")
     button.setAttribute("class", "button")
     button.addEventListener("click", function (event) {
-      console.log(event.target.innerHTML)
+      //console.log(event.target.innerHTML)
       renderSearch(event.target.innerHTML)
     })
     button.innerHTML = searchHistory[i]
     recentHistory.appendChild(button)
-    console.log(searchHistory[i])
+    //console.log(searchHistory[i])
   }
 }
 
@@ -39,7 +39,7 @@ var storeSearchHistory = function (search) {
     searchHistory.pop()
   }
   searchHistory.unshift(search)
-  console.log(searchHistory)
+  //console.log(searchHistory)
   localStorage.setItem("Searchhistory", JSON.stringify(searchHistory))
   renderSearchHistory()
 
@@ -54,13 +54,15 @@ var renderSearch = function (search) {
       "x-rapidapi-key": "eff664db17mshe95b0e4695a6a7cp1b915ejsnbf16eceafe4c"
     }
   })
-
-    .then((response) => {
-      //console.log(response);
-      response.json().then((data) => {
-        wines = data.pairedWines
-        pairingText.innerHTML = data.pairingText
-        wineList.innerHTML = ""
+  
+  .then((response) => {
+    //console.log(response);
+    response.json().then((data) => {
+      console.log(data)
+      wines = data.pairedWines
+      pairingText.innerHTML = data.pairingText
+      wineList.innerHTML = ""
+      recipeResults.innerHTML = ""
         try {
           for (var i = 0; i < wines.length; i++) {
             var listItem = document.createElement("li")
@@ -73,7 +75,7 @@ var renderSearch = function (search) {
 
         }
 
-        //console.log(data);
+       
       })
     })
   fetch("https://tasty.p.rapidapi.com/recipes/list?from=0&size=5&q=" + search, {
@@ -88,17 +90,15 @@ var renderSearch = function (search) {
       //console.log(response);
       response.json().then((data) => {
         console.log(data.results)
-        console.log(data.results[0].instructions.length)
-        recipeResults.innerHTML = ""
         // try {
         for (var i = 0; i < data.results.length; i++) {
-          var recipe = document.createElement("div")
-          var recipeName = document.createElement("div")
-          recipe.setAttribute("class", "recipe")
-          recipeName.setAttribute("class", "recipe-name")
-          recipeName.innerHTML = data.results[i].name
-          recipe.appendChild(recipeName)
           if (data.results[i].instructions) {
+            var recipe = document.createElement("div")
+            var recipeName = document.createElement("div")
+            recipe.setAttribute("class", "recipe")
+            recipeName.setAttribute("class", "recipe-name")
+            recipeName.innerHTML = data.results[i].name
+            recipe.appendChild(recipeName)
             var instructions = document.createElement("ul")
             instructions.setAttribute("class", "instructions")
             for (var r = 0; r < data.results[i].instructions.length; r++) {
@@ -108,16 +108,8 @@ var renderSearch = function (search) {
               instructions.appendChild(step)
             }
             recipe.appendChild(instructions)
-          } else if(data.results[i].video_url) {
-            var link = document.createElement("a")
-            link.innerHTML = "Link to Video Instructions"
-            link.setAttribute("href", data.results[i].video_url)
-            recipe.appendChild(link)
-          } else {
-            var noInstruction = document.createElement("div")
-            noInstruction.innerHTML = "There are no instructions to be found. Good Luck!"
-            
           }
+
           recipeResults.appendChild(recipe)
         }
 
