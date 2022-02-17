@@ -47,6 +47,11 @@ var storeSearchHistory = function (search) {
 
 // rendering search
 var renderSearch = function (search) {
+  if(search == ""){
+    recipeResults.innerHTML = "Your search can not be blank."
+    pairingText.innerHTML = "Your search can not be blank."
+    return
+  }
   fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/pairing?food=" + search + "&maxPrice=50", {
     "method": "GET",
     "headers": {
@@ -54,28 +59,29 @@ var renderSearch = function (search) {
       "x-rapidapi-key": "eff664db17mshe95b0e4695a6a7cp1b915ejsnbf16eceafe4c"
     }
   })
-  
-  .then((response) => {
-    //console.log(response);
-    response.json().then((data) => {
-      console.log(data)
-      wines = data.pairedWines
-      pairingText.innerHTML = data.pairingText
-      wineList.innerHTML = ""
-      recipeResults.innerHTML = ""
+
+    .then((response) => {
+      //console.log(response);
+      response.json().then((data) => {
+        console.log(data)
+        wines = data.pairedWines
+        pairingText.innerHTML = data.pairingText
+        wineList.innerHTML = ""
+        recipeResults.innerHTML = ""
         try {
-          for (var i = 0; i < wines.length; i++) {
-            var listItem = document.createElement("li")
-            listItem.setAttribute("class", "wine-item")
-            listItem.innerHTML = wines[i]
-            wineList.appendChild(listItem)
+          if (wines.length > 0) {
+            for (var i = 0; i < wines.length; i++) {
+              var listItem = document.createElement("li")
+              listItem.setAttribute("class", "wine-item")
+              listItem.innerHTML = wines[i]
+              wineList.appendChild(listItem)
+            }
+          } else {
+            pairingText.innerHTML = "We're sorry! We could not find a wine pairng for " + search + ". "
           }
         } catch (error) {
-          pairingText.innerHTML = "Result not found. Please try again."
-
+          pairingText.innerHTML = "We're sorry! We could not find a wine pairng for " + search + "."
         }
-
-       
       })
     })
   fetch("https://tasty.p.rapidapi.com/recipes/list?from=0&size=5&q=" + search, {
@@ -85,41 +91,36 @@ var renderSearch = function (search) {
       "x-rapidapi-key": "5a14697b02msh42244a1beada018p100b3ajsn699e260e7f11"
     }
   })
-
     .then(response => {
       //console.log(response);
       response.json().then((data) => {
-        console.log(data.results)
-        // try {
-        for (var i = 0; i < data.results.length; i++) {
-          if (data.results[i].instructions) {
-            var recipe = document.createElement("div")
-            var recipeName = document.createElement("div")
-            recipe.setAttribute("class", "recipe")
-            recipeName.setAttribute("class", "recipe-name")
-            recipeName.innerHTML = data.results[i].name
-            recipe.appendChild(recipeName)
-            var instructions = document.createElement("ul")
-            instructions.setAttribute("class", "instructions")
-            for (var r = 0; r < data.results[i].instructions.length; r++) {
-              var step = document.createElement("li")
-              step.setAttribute("class", "step")
-              step.innerHTML = data.results[i].instructions[r].display_text
-              instructions.appendChild(step)
+        console.log(data)
+        if(data.results.length > 0 ){
+          for (var i = 0; i < data.results.length; i++) {
+            if (data.results[i].instructions) {
+              var recipe = document.createElement("div")
+              var recipeName = document.createElement("div")
+              recipe.setAttribute("class", "recipe")
+              recipeName.setAttribute("class", "recipe-name")
+              recipeName.innerHTML = data.results[i].name
+              recipe.appendChild(recipeName)
+              var instructions = document.createElement("ul")
+              instructions.setAttribute("class", "instructions")
+              for (var r = 0; r < data.results[i].instructions.length; r++) {
+                var step = document.createElement("li")
+                step.setAttribute("class", "step")
+                step.innerHTML = data.results[i].instructions[r].display_text
+                instructions.appendChild(step)
+              }
+              recipe.appendChild(instructions)
             }
-            recipe.appendChild(instructions)
+            recipeResults.appendChild(recipe)
           }
-
-          recipeResults.appendChild(recipe)
+        } else {
+          recipeResults.innerHTML = "We're sorry! We could not find recipes for " + search + "."
         }
-
-        //} 
-        // catch (error) {
-        //   recipeResults.innerHTML = "No Recipies Found"
-        // }
       })
     })
-
 }
 
 //search button
