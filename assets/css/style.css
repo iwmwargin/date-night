@@ -64,6 +64,13 @@ body {
     font-weight: bolder;
 }
 
+.step, .item {
+    margin: 10px;
+}
+.pairing-text {
+    font-size: 20px;
+}
+
 /* fading animation */
 .instructions, .recipe, .step, .content, .tile, .pairing-text {
 	animation: fadeInAnimation ease 2s;

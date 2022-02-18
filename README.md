@@ -1,7 +1,7 @@
-# Work Calendar/Scheduler
+# Date Night Recipe and Wine Pairing App
 
 ## Purpose
-To provide the user with a scheduler that will help them keep track of tasks they need to accomplish.  It will also let them know if their task is in the past, present, or future, (by way of color) thanks to the use of Moment js. The user will be able to save and retrieve their tasks to the website using localStorage.
+To provide the user with a quick food and wine pairing for a stay at home date night.  The user will input what kind of dish they would like to make and in return they will receive a few wine pairings as well as a recipe for the dish requested.
 
 ## Built With
 * HTML 
@@ -9,21 +9,21 @@ To provide the user with a scheduler that will help them keep track of tasks the
 * Javascript
 
 ## API's Used
-* Recipe-Food-Nutrition API
+* Spoonacular-Recipe-Food-Nutrition API
 * Tasty API
 
 ## Issues
-
+The app currently only produces the first recipe in the array and it would be great to randomize or pull multiple recipes in an attractive manner.
 
 ## Website
-<a href="" target="_blank">Scheduler</a>
+<a href="https://iwmwargin.github.io/date-night/" target="_blank">Date Night</a>
 
 ## Images of Website
-Top of Schedule
-<img src="">
+Top of Date Night
+<img src="https://github.com/iwmwargin/date-night/blob/main/assets/images/Top.png">
 
-Bottom of Schedule
-<img src="">
+Tiles Containing the Wine Pairings, Recipe and Recent History
+<img src="https://github.com/iwmwargin/date-night/blob/main/assets/images/Bottom.png">
 
 
 

@@ -89,7 +89,7 @@ var renderSearch = function (search) {
     "method": "GET",
     "headers": {
       "x-rapidapi-host": "tasty.p.rapidapi.com",
-      "x-rapidapi-key": "5a14697b02msh42244a1beada018p100b3ajsn699e260e7f11"
+      "x-rapidapi-key": "eff664db17mshe95b0e4695a6a7cp1b915ejsnbf16eceafe4c"
     }
   })
     .then(response => {
@@ -107,6 +107,7 @@ var renderSearch = function (search) {
               recipeName.innerHTML = data.results[i].name
               recipe.appendChild(recipeName)
               var instructions = document.createElement("ol")
+              var ingredients = document.createElement("ol")
               instructions.setAttribute("class", "instructions")
               for (var r = 0; r < data.results[i].instructions.length; r++) {
                 var step = document.createElement("li")
@@ -115,6 +116,18 @@ var renderSearch = function (search) {
                 instructions.appendChild(step)
               }
               recipe.appendChild(instructions)
+              var ingredientList = document.createElement("div")
+              ingredientList.setAttribute("class", "recipe-name")
+              ingredientList.innerHTML = "Ingredient List"
+              recipe.appendChild(ingredientList)
+              for (var u = 0; u < data.results[i].sections[0].components.length; u++){
+                var item = document.createElement("li")
+                item.setAttribute("class", "item")
+                item.innerHTML = data.results[i].sections[0].components[u].raw_text
+                console.log(data.results[i].sections[0].components[0].raw_text)
+                ingredients.appendChild(item)
+              }
+              recipe.appendChild(ingredients)
             }
             recipeResults.appendChild(recipe)
           }
