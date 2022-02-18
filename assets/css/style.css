@@ -70,6 +70,9 @@ body {
 .pairing-text {
     font-size: 20px;
 }
+.tile .title {
+    text-align: center;
+}
 
 /* fading animation */
 .instructions, .recipe, .step, .content, .tile, .pairing-text {
