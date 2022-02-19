@@ -25,7 +25,8 @@ Top of Date Night
 Tiles Containing the Wine Pairings, Recipe and Recent History
 <img src="https://github.com/iwmwargin/date-night/blob/main/assets/images/Bottom.png">
 
-
+## Presentation Slideshow Link
+<a href="https://docs.google.com/presentation/d/1TzKgfDhz8HNqlD-GsQbI7mHyxVT5bnks4T8Xj5VBQ_Q/edit#slide=id.p" target="_blank">Slideshow</a>
 
 ### Contribution
 Made by Carlos, Leigh, Eric and Luke
