@@ -71,6 +71,10 @@ body {
     font-size: 20px;
 }
 
+.footer {
+    padding: 1rem;
+}
+
 /* fading animation */
 .instructions, .recipe, .step, .content, .tile, .pairing-text {
 	animation: fadeInAnimation ease 2s;
